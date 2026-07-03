@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuel Bobie Amankwatia · Senior AI & Data Engineer</title>
+  <meta name="description" content="Senior AI & Data Engineer, PMP®, Founder of DataMastaros Ltd. NLP researcher, published at SPIE and EMNLP." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:  #f7f4ef;
+      --cream2: #eeeae2;
+      --cream3: #e4dfd5;
+      --ink:    #1a1714;
+      --ink2:   #3d3830;
+      --ink3:   #7a7268;
+      --ink4:   #b0a89c;
+      --blue:   #1d4ed8;
+      --blue2:  #2563eb;
+      --bluelt: #dbeafe;
+      --bluemid:#93c5fd;
+      --teal:   #0f766e;
+      --border: #d6d0c6;
+      --bord2:  #c4bcb0;
+      --white:  #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* ── reset links — no browser blue ── */
+    a { color: inherit; text-decoration: none; }
+    p a, li a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247,244,239,0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-size: 1.15rem; color: var(--ink); letter-spacing: -0.02em;
+    }
+    .nav-logo em { font-style: italic; color: var(--blue); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
+      background: var(--ink); color: var(--cream);
+      padding: 0.45rem 1.2rem; border-radius: 100px; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue); color: #fff; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 7rem 0; }
+
+   /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 62px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle diagonal stripe texture */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,78,216,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+    /* Hero photo (large, in hero section itself) */
+    .hero-photo-wrap {
+      position: absolute;
+      top: 62px; right: 0;
+      width: 420px;
+      height: calc(100vh - 62px);
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.32;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, transparent 80%),
+                  linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 80%);
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .hero-name .line2 {
+      color: var(--blue);
+      font-style: italic;
+    }
+    .hero-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink3);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.01em;
+    }
+    .hero-title .sep { color: var(--border2); margin: 0 0.5rem; }
+    .hero-bio {
+      font-size: 0.97rem;
+      color: var(--ink2);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+    }
+    .hero-bio strong { color: var(--ink); font-weight: 500; }
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.7rem 1.6rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--blue); }
+    .btn-outline {
+      border: 1.5px solid var(--border2);
+      color: var(--ink2);
+      padding: 0.68rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .stat-num em { font-style: normal; color: var(--blue); }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink4);
+      margin-top: 0.25rem;
+    }
+    /* Aside card */
+    .hero-aside {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.8rem; width: 230px; flex-shrink: 0;
+    }
+    .aside-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      margin-bottom: 1rem; border: 3px solid var(--cream2); display: block;
+    }
+    .aside-name {
+      font-family: 'DM Sans', sans-serif; font-weight: 600;
+      font-size: 0.9rem; color: var(--ink); margin-bottom: 0.2rem;
+    }
+    .aside-role {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      color: var(--ink4); letter-spacing: 0.06em; margin-bottom: 1.2rem;
+    }
+    .aside-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .aside-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.76rem; color: var(--ink3); transition: color 0.15s;
+    }
+    .aside-link:hover { color: var(--blue); }
+    .aside-icon {
+      width: 22px; height: 22px; background: var(--cream2);
+      border-radius: 5px; display: flex; align-items: center;
+      justify-content: center; font-size: 0.7rem; flex-shrink: 0;
+    }
+    .status-dot {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1.2rem; font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: var(--teal); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .status-dot::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal); display: inline-block;
+    }
+
+    /* ── SEC HEADERS ── */
+    .sec-head { margin-bottom: 3.5rem; }
+    .sec-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 0.7rem;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+      font-weight: 900; letter-spacing: -0.03em;
+      color: var(--ink); line-height: 1.1;
+    }
+    .sec-sub {
+      margin-top: 0.8rem; color: var(--ink3);
+      font-size: 0.93rem; font-weight: 300; max-width: 520px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 180px 1fr 1fr;
+      gap: 3.5rem; align-items: start;
+    }
+    .about-photo img {
+      width: 180px; height: 220px; object-fit: cover;
+      object-position: center top; border-radius: 14px;
+      border: 1px solid var(--border); display: block;
+    }
+    .about-photo-caption {
+      font-family: 'DM Mono', monospace; font-size: 0.58rem;
+      color: var(--ink4); letter-spacing: 0.08em;
+      text-align: center; margin-top: 0.6rem; text-transform: uppercase;
+    }
+    .about-text p {
+      color: var(--ink2); line-height: 1.8; font-weight: 300;
+      margin-bottom: 1rem; font-size: 0.93rem;
+    }
+    .about-text p strong { color: var(--ink); font-weight: 600; }
+    .about-links { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .about-link {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.78rem; color: var(--ink3); transition: color 0.15s;
+    }
+    .about-link:hover { color: var(--blue); }
+    .about-link .al-icon {
+      width: 24px; height: 24px; background: var(--cream2);
+      border-radius: 6px; display: flex; align-items: center;
+      justify-content: center; font-size: 0.72rem; flex-shrink: 0;
+    }
+    .edu-list { display: flex; flex-direction: column; gap: 1rem; }
+    .edu-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-left: 3px solid var(--blue); border-radius: 10px; padding: 1rem 1.2rem;
+    }
+    .edu-degree { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+    .edu-school {
+      font-family: 'DM Mono', monospace; font-size: 0.63rem;
+      letter-spacing: 0.06em; color: var(--blue); text-transform: uppercase;
+    }
+    .edu-grade { font-size: 0.76rem; color: var(--ink4); margin-top: 0.25rem; font-weight: 300; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--cream); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .skill-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.4rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--bluemid);
+      box-shadow: 0 4px 20px rgba(29,78,216,0.06);
+    }
+    .skill-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
+    .skill-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.7rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .stag {
+      font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.05em;
+      background: var(--bluelt); color: var(--blue);
+      padding: 0.2rem 0.55rem; border-radius: 100px;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--white); }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, var(--blue), var(--border));
+    }
+    .tl-item { margin-bottom: 2.6rem; position: relative; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -1.83rem; top: 5px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--blue); outline: 3px solid var(--white);
+    }
+    .tl-period {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; margin-bottom: 0.2rem;
+    }
+    .tl-role {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem;
+      font-weight: 700; color: var(--ink); margin-bottom: 0.1rem;
+    }
+    .tl-company { font-size: 0.83rem; color: var(--ink3); margin-bottom: 0.7rem; }
+    .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .tl-bullets li {
+      font-size: 0.86rem; color: var(--ink2); font-weight: 300;
+      padding-left: 1rem; position: relative;
+    }
+    .tl-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--bluemid); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--cream); }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; }
+    .proj-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .proj-card:hover {
+      border-color: var(--bluemid); transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(29,78,216,0.08);
+    }
+    .tag-row { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .ptag {
+      font-family: 'DM Mono', monospace; font-size: 0.57rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.18rem 0.55rem; border-radius: 100px;
+    }
+    .tag-cv  { background: #ede9fe; color: #5b21b6; }
+    .tag-nlp { background: #d1fae5; color: #065f46; }
+    .tag-ts  { background: #fef3c7; color: #92400e; }
+    .tag-gen { background: #fee2e2; color: #991b1b; }
+    .tag-rag { background: var(--bluelt); color: var(--blue); }
+    .tag-med { background: #ccfbf1; color: #0f766e; }
+    .proj-title {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem;
+      font-weight: 700; color: var(--ink); margin-bottom: 0.4rem;
+    }
+    .proj-desc { font-size: 0.83rem; color: var(--ink3); line-height: 1.65; font-weight: 300; margin-bottom: 0.9rem; }
+    .proj-stack { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--ink4); margin-bottom: 1rem; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: 'DM Mono', monospace; font-size: 0.63rem;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--blue);
+      border-bottom: 1px solid var(--bluemid); padding-bottom: 1px;
+      transition: border-color 0.15s;
+    }
+    .proj-link:hover { border-color: var(--blue); }
+
+    /* ── RESEARCH ── */
+    #research { background: var(--white); }
+    .paper-list { display: flex; flex-direction: column; gap: 0.9rem; }
+    .paper-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.3rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: center; transition: border-color 0.2s;
+    }
+    .paper-card:hover { border-color: var(--bord2); }
+    .paper-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); line-height: 1.5; margin-bottom: 0.25rem; }
+    .paper-venue {
+      font-family: 'DM Mono', monospace; font-size: 0.58rem;
+      letter-spacing: 0.06em; color: var(--blue); text-transform: uppercase;
+    }
+    .pill-pub    { background: #d1fae5; color: #065f46; }
+    .pill-review { background: #fef3c7; color: #92400e; }
+    .paper-pill {
+      font-family: 'DM Mono', monospace; font-size: 0.57rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.22rem 0.6rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .conf-list { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; }
+    .conf-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.86rem; color: var(--ink2); font-weight: 300;
+      padding: 0.7rem 1rem; background: var(--cream);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .conf-year {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      color: var(--blue); letter-spacing: 0.1em; flex-shrink: 0; min-width: 36px;
+    }
+
+    /* ── CERTS ── */
+    #certifications { background: var(--cream); }
+    .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.2rem; }
+    .cert-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.1rem; text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover { border-color: var(--bluemid); box-shadow: 0 4px 16px rgba(29,78,216,0.07); }
+    .cert-icon { font-size: 1.7rem; margin-bottom: 0.5rem; }
+    .cert-name { font-size: 0.8rem; font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: 0.25rem; }
+    .cert-body { font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.06em; color: var(--ink4); text-transform: uppercase; }
+    .cert-note {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.5rem; font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; color: var(--ink3); letter-spacing: 0.04em; text-align: center;
+    }
+    .cert-note strong { color: var(--blue); }
+
+    /* ── COMMUNITY ── */
+    #community { background: var(--white); }
+    .community-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .comm-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.2rem;
+    }
+    .comm-name { font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+    .comm-role { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; }
+    .comm-desc { font-size: 0.78rem; color: var(--ink3); font-weight: 300; margin-top: 0.25rem; }
+
+    /* ── GRANTS ── */
+    .grants-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 2.5rem; }
+    .grant-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.4rem; flex: 1; min-width: 200px;
+    }
+    .grant-amount {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem;
+      font-weight: 900; color: var(--blue); letter-spacing: -0.03em;
+    }
+    .grant-name { font-size: 0.85rem; font-weight: 500; color: var(--ink); margin-top: 0.2rem; }
+    .grant-year { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--ink4); margin-top: 0.2rem; letter-spacing: 0.08em; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); }
+    #contact .sec-eyebrow { color: var(--bluemid); }
+    #contact .sec-title { color: var(--white); }
+    #contact .sec-sub { color: #64748b; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-text p { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; font-weight: 300; margin-bottom: 1.3rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-item { display: flex; align-items: center; gap: 0.9rem; font-size: 0.86rem; color: #94a3b8; }
+    .ci-icon {
+      width: 34px; height: 34px; background: #1e293b;
+      border: 1px solid #334155; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0; color: var(--bluemid);
+    }
+    .contact-item a { color: var(--bluemid); transition: color 0.15s; }
+    .contact-item a:hover { color: #93c5fd; }
+    .open-to {
+      background: #0f172a; border: 1px solid #1e3a5f;
+      border-radius: 16px; padding: 2rem;
+    }
+    .open-to h4 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      font-weight: 700; color: var(--white); margin-bottom: 1.2rem;
+    }
+    .open-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .open-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.84rem; color: #94a3b8; }
+    .open-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue2); flex-shrink: 0; margin-top: 7px; }
+
+    /* ── FOOTER ── */
+    footer { background: #020408; border-top: 1px solid #1e293b; padding: 2rem 0; }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #334155; letter-spacing: 0.08em; }
+    .footer-social { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .footer-social a {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #334155; transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--bluemid); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-aside { display: none; }
+      .hero-photo-wrap { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { display: none; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .community-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-cta { font-size: 0.78rem; padding: 0.4rem 1rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .community-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.8rem; }
+      .hero-name { font-size: 2.5rem; }
+      section { padding: 4rem 0; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-card .paper-pill { width: fit-content; }
+      /* footer fix */
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .footer-social { gap: 0.8rem; }
+      .grants-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">M.<em>Bobie</em></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="Manuel_Bobie_CV.pdf" class="nav-cta" download>↓ CV</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-photo-wrap">
+    <img src="manuel_photo.jpg" alt="" aria-hidden="true" />
+  </div>
+  <div class="container">
+    <div class="hero-layout">
+      <div>
+        <div class="hero-eyebrow">Senior AI & Data Engineer · Kumasi, Ghana</div>
+        <h1 class="hero-name">
+          Manuel Bobie
+          <span class="line2">Amankwatia</span>
+        </h1>
+        <p class="hero-title">
+          PMP®<span class="sep">·</span>Founder, DataMastaros Ltd<span class="sep">·</span>AI Researcher
+        </p>
+        <p class="hero-bio">
+          I design and deploy <strong>enterprise-grade machine learning systems</strong> — NLP, computer vision, and multimodal AI. Published at <strong>SPIE</strong> and <strong>EMNLP 2024</strong>. Presented at <strong>Deep Learning Indaba</strong>. Secured <strong>$27,000 in research grants</strong>. Actively seeking remote & onsite AI/ML roles and PhD opportunities in the USA and Canada.
+        </p>
+        <div class="hero-actions">
+          <a href="Manuel_Bobie_CV.pdf" class="btn-primary" download>↓ Download CV</a>
+          <a href="#projects" class="btn-outline">View projects →</a>
+          <a href="mailto:manuelamankwatia@gmail.com" class="btn-outline">Get in touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">7<em>+</em></div><div class="stat-label">Years experience</div></div>
+          <div class="stat"><div class="stat-num">14+</div><div class="stat-label">Live AI apps</div></div>
+          <div class="stat"><div class="stat-num">9+</div><div class="stat-label">Research papers</div></div>
+          <div class="stat"><div class="stat-num">500<em>+</em></div><div class="stat-label">Engineers mentored</div></div>
+          <div class="stat"><div class="stat-num">$27k</div><div class="stat-label">Research grants</div></div>
+        </div>
+      </div>
+      <div class="hero-aside">
+        <img src="manuel_photo.jpg" alt="Manuel Bobie Amankwatia" class="aside-avatar" />
+        <div class="aside-name">Manuel Bobie Amankwatia</div>
+        <div class="aside-role">Chief AI Officer · DataMastaros</div>
+        <div class="aside-links">
+          <a href="mailto:manuelamankwatia@gmail.com" class="aside-link"><span class="aside-icon">✉</span>manuelamankwatia@gmail.com</a>
+          <a href="https://linkedin.com/in/m-bobieamankwatia" class="aside-link" target="_blank"><span class="aside-icon">in</span>LinkedIn</a>
+          <a href="https://huggingface.co/SirBobb" class="aside-link" target="_blank"><span class="aside-icon">🤗</span>HuggingFace · SirBobb</a>
+          <a href="https://huggingface.co/mbobie" class="aside-link" target="_blank"><span class="aside-icon">🤗</span>HuggingFace · mbobie</a>
+          <a href="https://github.com/mBobie" class="aside-link" target="_blank"><span class="aside-icon">gh</span>GitHub</a>
+        </div>
+        <div class="status-dot">Open to work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Who I am</div>
+      <h2 class="sec-title">AI researcher.<br />Engineer. Founder.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="manuel_photo.jpg" alt="Manuel Bobie Amankwatia" />
+        <div class="about-photo-caption">Manuel Bobie Amankwatia</div>
+      </div>
+      <div class="about-text">
+        <p>I am a <strong>Senior AI & Data Engineer</strong> and <strong>PMP®-certified project manager</strong> with deep expertise in designing intelligent systems that remain reliable under real-world conditions — noisy data, low-resource environments, and production-scale pressure.</p>
+        <p>My research challenges a central assumption in AI: that higher benchmark accuracy reflects genuine progress. I study <strong>reliability and representation theory in neural NLP</strong>, formalising the Golden Draw Effect and using functional decomposition to explain how hybrid representations govern robustness.</p>
+        <p>As <strong>Founder & Chief AI Officer of DataMastaros Limited</strong>, I translate AI research into practical solutions for businesses across Ghana and beyond. I have presented at <strong>Deep Learning Indaba, EMNLP, and SPIE</strong>, and serve as a peer reviewer for EMNLP MRL 2025 and SACAIR 2024.</p>
+        <div class="about-links">
+          <a href="https://linkedin.com/in/m-bobieamankwatia" class="about-link" target="_blank"><span class="al-icon">in</span>linkedin.com/in/m-bobieamankwatia</a>
+          <a href="https://huggingface.co/SirBobb" class="about-link" target="_blank"><span class="al-icon">🤗</span>huggingface.co/SirBobb</a>
+          <a href="https://github.com/mBobie" class="about-link" target="_blank"><span class="al-icon">gh</span>github.com/mBobie</a>
+          <a href="mailto:manuelamankwatia@gmail.com" class="about-link"><span class="al-icon">✉</span>manuelamankwatia@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="sec-eyebrow" style="margin-bottom:1.1rem;">Education</div>
+        <div class="edu-list">
+          <div class="edu-card">
+            <div class="edu-degree">MSc, Project Management</div>
+            <div class="edu-school">KNUST · 2025 – 2026</div>
+            <div class="edu-grade">Distinction · AI-Driven Project Management for Real Estate Startups</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">MPhil, Computer Engineering</div>
+            <div class="edu-school">KNUST · 2020 – 2022 · AI & Robotics</div>
+            <div class="edu-grade">Distinction · Dual-Input CNN for Intent Classification</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">BSc, Engineering Physics</div>
+            <div class="edu-school">University of Cape Coast · 2013 – 2017</div>
+            <div class="edu-grade">Electrical track</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Technical depth</div>
+      <h2 class="sec-title">What I build with</h2>
+      <p class="sec-sub">Full-stack AI engineering — from raw data to deployed models, BI dashboards, and explainable systems.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">🧠</div><div class="skill-title">ML & Deep Learning</div><div class="skill-tags"><span class="stag">PyTorch</span><span class="stag">TensorFlow</span><span class="stag">Keras</span><span class="stag">Scikit-learn</span><span class="stag">XGBoost</span><span class="stag">HuggingFace</span></div></div>
+      <div class="skill-card"><div class="skill-icon">💬</div><div class="skill-title">NLP & LLMs</div><div class="skill-tags"><span class="stag">Transformers</span><span class="stag">BERT/RoBERTa</span><span class="stag">FinBERT</span><span class="stag">LangChain</span><span class="stag">RAG</span><span class="stag">FAISS</span></div></div>
+      <div class="skill-card"><div class="skill-icon">👁️</div><div class="skill-title">Computer Vision</div><div class="skill-tags"><span class="stag">OpenCV</span><span class="stag">ViT</span><span class="stag">YOLOv8</span><span class="stag">SAM</span><span class="stag">Stable Diffusion</span><span class="stag">SVM</span></div></div>
+      <div class="skill-card"><div class="skill-icon">🔍</div><div class="skill-title">XAI & Research Methods</div><div class="skill-tags"><span class="stag">SHAP</span><span class="stag">LIME</span><span class="stag">fsQCA</span><span class="stag">NCA</span><span class="stag">SEM</span><span class="stag">Ablation Studies</span></div></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Data Engineering & BI</div><div class="skill-tags"><span class="stag">Python</span><span class="stag">SQL</span><span class="stag">R</span><span class="stag">Power BI</span><span class="stag">Tableau</span><span class="stag">AWS</span></div></div>
+      <div class="skill-card"><div class="skill-icon">🚀</div><div class="skill-title">Deployment & MLOps</div><div class="skill-tags"><span class="stag">HF Spaces</span><span class="stag">Streamlit</span><span class="stag">Gradio</span><span class="stag">Docker</span><span class="stag">GitHub Pages</span><span class="stag">PMP®</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Career</div>
+      <h2 class="sec-title">7+ years building<br />intelligent systems</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">June 2024 – Present</div>
+        <div class="tl-role">Founder & Chief AI Officer</div>
+        <div class="tl-company">DataMastaros Limited · Ghana</div>
+        <ul class="tl-bullets">
+          <li>Founded and scaled an AI & data consulting firm delivering ML solutions across real estate, finance, and energy sectors.</li>
+          <li>Secured <strong>$25,000 AWS Activate grant</strong> and <strong>$2,000 Cohere AI research credits</strong>.</li>
+          <li>Architected NLP pipelines, predictive analytics, and automation products; led cross-functional teams from ideation to production.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">Feb 2023 – Present</div>
+        <div class="tl-role">Artificial Intelligence Engineer</div>
+        <div class="tl-company">Turing (Remote) · United States</div>
+        <ul class="tl-bullets">
+          <li>Engineered scalable AI systems, reducing delivery timelines by 25% and maintaining 99% data integrity across production ML pipelines.</li>
+          <li>Integrated AI research into client systems, contributing to 20% efficiency gains and 15% revenue uplift.</li>
+          <li>3+ years of reliable high-output remote delivery across distributed international teams.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">June 2018 – Present</div>
+        <div class="tl-role">Data Scientist / Senior Programmer</div>
+        <div class="tl-company">Softmasters Company Ltd. (Canada) · Part-Time</div>
+        <ul class="tl-bullets">
+          <li>Engineered ML algorithms improving predictive accuracy by 35%.</li>
+          <li>Built scalable database architectures improving data retrieval by 40%.</li>
+          <li>Mentored 15+ junior engineers, accelerating team delivery by 50%.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2022 – 2023</div>
+        <div class="tl-role">Teaching Assistant & Lab Instructor</div>
+        <div class="tl-company">Dept. of Computer Engineering, KNUST · Kumasi, Ghana</div>
+        <ul class="tl-bullets">
+          <li>Delivered lab instruction for undergraduate AI and programming modules alongside faculty.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">Aug 2021 – Jan 2023</div>
+        <div class="tl-role">Electronics / Robotics / AI Engineer</div>
+        <div class="tl-company">Innovation Lab, KNUST · Kumasi, Ghana</div>
+        <ul class="tl-bullets">
+          <li>Spearheaded robotics and AI projects bridging academic research with applied engineering.</li>
+          <li>Mentored 500+ junior engineers and tech students.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">Summers 2014 – 2016</div>
+        <div class="tl-role">Engineering Intern</div>
+        <div class="tl-company">Ghana Grid Company (GRIDCO) · Kumasi, Ghana</div>
+        <ul class="tl-bullets">
+          <li>Three rotations across Telecommunications, Electrical & Maintenance Engineering on Ghana's national power grid.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Live AI apps · huggingface.co/SirBobb</div>
+      <h2 class="sec-title">Many deployed<br />AI applications</h2>
+      <p class="sec-sub">Every project is live, publicly accessible, and built end-to-end — model training to production UI.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-cv">Computer Vision</span><span class="ptag tag-cv">ViT</span></div><div class="proj-title">DermaScan</div><div class="proj-desc">ViT fine-tuned on HAM10000 for 7-class skin lesion classification. Handles severe class imbalance via WeightedRandomSampler and class-weighted loss. Full medical disclaimer UI.</div><div class="proj-stack">ViT-base · PyTorch · HAM10000 · Streamlit</div><a href="https://huggingface.co/spaces/SirBobb/DermaScan" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-cv">Computer Vision</span><span class="ptag tag-cv">YOLOv8</span></div><div class="proj-title">DetectX</div><div class="proj-desc">Real-time object detector on 80 COCO classes. Custom bounding-box renderer, detection table, and annotated image download.</div><div class="proj-stack">YOLOv8 · Ultralytics · Pillow · Streamlit</div><a href="https://huggingface.co/spaces/SirBobb/DetectX" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-med">Medical Imaging</span><span class="ptag tag-cv">SAM</span></div><div class="proj-title">MedSAM</div><div class="proj-desc">Interactive medical image segmentation using Meta's SAM. Click to segment X-rays, MRI slices, and histology with multi-region mask overlay.</div><div class="proj-stack">SAM (sam-vit-base) · Transformers · Gradio</div><a href="https://huggingface.co/spaces/SirBobb/MedSAM" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-rag">RAG</span><span class="ptag tag-nlp">NLP</span></div><div class="proj-title">DocuMind</div><div class="proj-desc">Multilingual RAG chatbot — upload any PDF, ask in any language. FAISS vector search, multilingual embeddings, streaming responses with source citations.</div><div class="proj-stack">FAISS · sentence-transformers · Zephyr-7B · HF API</div><a href="https://huggingface.co/spaces/SirBobb/DocuMind" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-nlp">Audio</span><span class="ptag tag-nlp">NLP</span></div><div class="proj-title">EchoBrief</div><div class="proj-desc">Two-model pipeline: Whisper transcribes speech, BART summarises. Sequential GPU memory management — each model freed before the next loads.</div><div class="proj-stack">OpenAI Whisper · BART · pydub · Streamlit</div><a href="https://huggingface.co/spaces/SirBobb/EchoBrief" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-ts">Time Series</span><span class="ptag tag-ts">LSTM</span></div><div class="proj-title">PulseStock</div><div class="proj-desc">LSTM stock forecaster trained live in-browser. Fetches real price history, trains a 2-layer PyTorch LSTM with streaming log, forecasts N days with confidence bands.</div><div class="proj-stack">PyTorch · yfinance · Plotly · Streamlit</div><a href="https://huggingface.co/spaces/SirBobb/PulseStock" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-gen">Generative AI</span><span class="ptag tag-gen">SDXL</span></div><div class="proj-title">PixelForge</div><div class="proj-desc">Text-to-image generator using Stable Diffusion XL via HF Inference API. 8 style presets, 5 aspect ratios. No GPU required.</div><div class="proj-stack">SDXL · HF Inference API · Streamlit</div><a href="https://huggingface.co/spaces/SirBobb/PixelForge" class="proj-link" target="_blank">↗ Live demo</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-nlp">NLP</span><span class="ptag tag-nlp">Classification</span></div><div class="proj-title">VerifAI · FitScore · EmoDetect</div><div class="proj-desc">Three NLP classifiers: RoBERTa fake news detector, sentence-transformer resume-job matcher with FAISS keyword analysis, DistilBERT 6-class emotion detector.</div><div class="proj-stack">RoBERTa · sentence-transformers · DistilBERT · FAISS</div><a href="https://huggingface.co/SirBobb" class="proj-link" target="_blank">↗ View all on HF</a></div>
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-nlp">NLP</span><span class="ptag tag-ts">Finance</span></div><div class="proj-title">Hilbot Financial Intent Classifier</div><div class="proj-desc">Novel benchmark (1,525 samples, 33 classes) for financial intent classification. Hybrid model outperformed DistilBERT, RoBERTa, and FinBERT by up to 11.6 percentage points. Accepted EMNLP 2024.</div><div class="proj-stack">HilbotFI Benchmark · Hybrid CNN/LSTM · Transformers</div><a href="https://huggingface.co/spaces/mbobie/Hilbot-Financial-Intent-Classifier" class="proj-link" target="_blank">↗ Live demo</a></div>
+
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-cv">Computer Vision</span><span class="ptag tag-nlp">Recognition</span></div><div class="proj-title">Public Figure Classifier</div><div class="proj-desc">Public figure recognition engine using OpenCV, SVM, and RandomForest. Face image classification with high accuracy across multiple public figures.</div><div class="proj-stack">OpenCV · SVM · RandomForest · HuggingFace</div><a href="https://huggingface.co/spaces/mbobie/Public-Figure-Classifier" class="proj-link" target="_blank">↗ Live demo</a></div>
+
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-rag">XAI</span><span class="ptag tag-ts">PropTech</span></div><div class="proj-title">Ghana PropTech AI Constraint Analysis</div><div class="proj-desc">Research app exploring which AI functions fail first in Ghanaian PropTech startups. SHAP-based explainability, mediated pathways analysis. Directly tied to ECAM paper under review.</div><div class="proj-stack">SHAP · Gradient Boosting · fsQCA · Streamlit</div><a href="https://huggingface.co/spaces/mbobie/Which-AI-Functions-Fail-First" class="proj-link" target="_blank">↗ Live demo</a></div>
+
+      <div class="proj-card"><div class="tag-row"><span class="ptag tag-rag">XAI</span><span class="ptag tag-ts">Decision Support</span></div><div class="proj-title">AI-PM Ghana PropTech Diagnostic</div><div class="proj-desc">Explainable decision-support tool assessing AI readiness for Ghanaian real estate startups and generating actionable roadmaps. Gradient Boosting R² = 0.893. Tied to AI-PM-DES paper.</div><div class="proj-stack">Gradient Boosting · SHAP · LIME · Streamlit</div><a href="https://huggingface.co/spaces/mbobie/AI-PM-Ghana-PropTech-Diagnostic" class="proj-link" target="_blank">↗ Live demo</a></div>  
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Academic work</div>
+      <h2 class="sec-title">9 research papers —<br />published, accepted & under review</h2>
+      <p class="sec-sub">NLP, hybrid neural architectures, explainable AI, and AI adoption in emerging markets.</p>
+    </div>
+    <div class="paper-list">
+      <div class="paper-card"><div><div class="paper-title">In-situ remote diagnostics on Theobroma cacao plants with a 3D-printed fluorescence lidar</div><div class="paper-venue">SPIE Digital Library · Proc. Vol. 14105 · DOI: 10.1117/12.3100145 · Presented Strasbourg</div></div><span class="paper-pill pill-pub">Published</span></div>
+      <div class="paper-card"><div><div class="paper-title">Hilbot: A Deep Learning and NLP-based Framework for Financial Analysis and Intent Classification</div><div class="paper-venue">NLP4Science Workshop, EMNLP 2024 · Also presented Deep Learning Indaba, 2024</div></div><span class="paper-pill pill-pub">Accepted</span></div>
+      <div class="paper-card"><div><div class="paper-title">Understanding Representation Interaction in Intent Classification: Functional Decomposition in Dual-Input CNNs</div><div class="paper-venue">Target: Journal of Engineering Reports</div></div><span class="paper-pill pill-review">Under review</span></div>
+      <div class="paper-card"><div><div class="paper-title">The Golden Draw Effect: Instability of Peak Performance under Hyperparameter Optimization</div><div class="paper-venue">Target: SN Computer Science</div></div><span class="paper-pill pill-review">Under review</span></div>
+      <div class="paper-card"><div><div class="paper-title">When Hybrid Models Outperform SOTA: A Data-Centric Benchmark of Financial Intent Classification under Low-Resource and Imbalanced Conditions</div><div class="paper-venue">Target: International Journal of Intelligent Systems · Accepted: Deep Learning Indaba 2026</div></div><span class="paper-pill pill-review">Under review</span></div>
+      <div class="paper-card"><div><div class="paper-title">Strategic Enabler Configurations, Necessary Conditions, and Policy-Responsive AI Adoption in Ghanaian PropTech Startups: Evidence from fsQCA, NCA, and Counterfactual Simulation</div><div class="paper-venue">Target: ECAM</div></div><span class="paper-pill pill-review">Under review</span></div>
+      <div class="paper-card"><div><div class="paper-title">AI Functional Constraints and Construction Project Performance in Emerging Markets: Mediated Pathways, Explainable Analytics, and Startup Typologies from Ghana</div><div class="paper-venue">Target: ECAM</div></div><span class="paper-pill pill-review">Under review</span></div>
+      <div class="paper-card"><div><div class="paper-title">AI-PM-DES: An Explainable Decision-Support Framework for AI Adoption in Emerging-Market Real Estate Startups</div><div class="paper-venue">Target: World Journal of Advanced Research and Reviews</div></div><span class="paper-pill pill-review">Under review</span></div>
+      <div class="paper-card"><div><div class="paper-title">Stable Features, Gradual Failure: An Explainability Study of Robustness in Intent Classification</div><div class="paper-venue">Under Review</div></div><span class="paper-pill pill-review">Under review</span></div>
+    </div>
+
+    <div class="sec-eyebrow" style="margin-top:3rem;margin-bottom:1rem;">Conference Presentations</div>
+    <div class="conf-list">
+      <div class="conf-item"><span class="conf-year">2026</span>Deep Learning Indaba 2026 (upcoming) — When Hybrid Models Outperform SOTA (accepted)</div>
+      <div class="conf-item"><span class="conf-year">2025</span>IndabaX Ghana 2025 — Research presentation</div>
+      <div class="conf-item"><span class="conf-year">2024</span>Deep Learning Indaba, Dakar — Dual-Input CNNs for Intent Classification & Hilbot Financial Framework</div>
+      <div class="conf-item"><span class="conf-year">2024</span>IndabaX Ghana 2024 — Research presentation</div>
+      <div class="conf-item"><span class="conf-year">2024</span>NLP4Science Workshop, EMNLP 2024 — Hilbot: Financial Analysis & Intent Classification</div>
+      <div class="conf-item"><span class="conf-year">2024</span>SPIE Conference, Strasbourg — In-situ fluorescence lidar diagnostics on Theobroma cacao</div>
+    </div>
+
+    <div class="grants-row">
+      <div class="grant-card"><div class="grant-amount">$25,000</div><div class="grant-name">AWS Activate Startup Grant</div><div class="grant-year">DataMastaros Limited · 2024</div></div>
+      <div class="grant-card"><div class="grant-amount">$2,000</div><div class="grant-name">Cohere AI Research Credits</div><div class="grant-year">2024</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Credentials</div>
+      <h2 class="sec-title">Certified &amp;<br />continuously learning</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card"><div class="cert-icon">🏆</div><div class="cert-name">Project Management Professional (PMP®)</div><div class="cert-body">PMI · Valid to 2029</div></div>
+      <div class="cert-card"><div class="cert-icon">🧠</div><div class="cert-name">Deep Learning Specialization</div><div class="cert-body">deeplearning.ai · 2023</div></div>
+      <div class="cert-card"><div class="cert-icon">🔷</div><div class="cert-name">TensorFlow Developer Certificate</div><div class="cert-body">Google · 2023</div></div>
+      <div class="cert-card"><div class="cert-icon">💬</div><div class="cert-name">NLP Specialization</div><div class="cert-body">deeplearning.ai · 2023</div></div>
+      <div class="cert-card"><div class="cert-icon">🤖</div><div class="cert-name">Cognitive PM in AI (CPMAI)™</div><div class="cert-body">PMI · May 2025</div></div>
+      <div class="cert-card"><div class="cert-icon">⚡</div><div class="cert-name">GenAI for Project Managers</div><div class="cert-body">PMI · March 2025</div></div>
+      <div class="cert-card"><div class="cert-icon">📊</div><div class="cert-name">Google Data Analytics</div><div class="cert-body">Google · 2024</div></div>
+      <div class="cert-card"><div class="cert-icon">🔧</div><div class="cert-name">Data Engineering with Python & SQL</div><div class="cert-body">IBM · 2023</div></div>
+    </div>
+    <div class="cert-note"><strong>70+ completed certifications</strong> across Coursera, Udemy, Google, PMI, IBM, Cisco, and AWS · Full list available on request</div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Community & Service</div>
+      <h2 class="sec-title">Active in the<br />global AI ecosystem</h2>
+    </div>
+    <div class="community-grid">
+      <div class="comm-card"><div class="comm-name">Deep Learning Indaba</div><div class="comm-role">Mentor · 2024 – Present</div></div>
+      <div class="comm-card"><div class="comm-name">Zindi Africa</div><div class="comm-role">Brand Ambassador · 2024 – Present</div></div>
+      <div class="comm-card"><div class="comm-name">EMNLP MRL 2025</div><div class="comm-role">Peer Reviewer</div></div>
+      <div class="comm-card"><div class="comm-name">SACAIR 2024</div><div class="comm-role">Reviewer & Programme Committee</div></div>
+      <div class="comm-card"><div class="comm-name">Masakhane</div><div class="comm-role">Member · Pan-African NLP Research</div></div>
+      <div class="comm-card"><div class="comm-name">Black in AI</div><div class="comm-role">Member</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Let's talk</div>
+      <h2 class="sec-title">Open to the right<br />opportunity</h2>
+      <p class="sec-sub">Hiring manager, research lab, or founder who needs AI expertise — reach out.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p>I bring 7+ years of production AI experience, a research publication track record spanning SPIE and EMNLP, $27k in secured research grants, and the project management discipline of a PMP® — an unusual combination for a technical role and a genuine asset for PhD programmes looking for candidates who can both publish and ship.</p>
+        <div class="contact-items">
+          <div class="contact-item"><div class="ci-icon">✉</div><a href="mailto:manuelamankwatia@gmail.com">manuelamankwatia@gmail.com</a></div>
+          <div class="contact-item"><div class="ci-icon">📱</div><span>+233 548 066 655</span></div>
+          <div class="contact-item"><div class="ci-icon">📍</div><span>Kumasi, Ghana · Open to relocation (USA / Canada)</span></div>
+          <div class="contact-item"><div class="ci-icon">in</div><a href="https://linkedin.com/in/m-bobieamankwatia" target="_blank">linkedin.com/in/m-bobieamankwatia</a></div>
+          <div class="contact-item"><div class="ci-icon">🤗</div><a href="https://huggingface.co/SirBobb" target="_blank">huggingface.co/SirBobb</a></div>
+        </div>
+      </div>
+      <div class="open-to">
+        <h4>Currently open to</h4>
+        <div class="open-list">
+          <div class="open-item"><div class="open-dot"></div><span>Remote AI/ML engineering roles — US or Canadian companies, any timezone</span></div>
+          <div class="open-item"><div class="open-dot"></div><span>Onsite positions in the USA or Canada (open to relocation)</span></div>
+          <div class="open-item"><div class="open-dot"></div><span>PhD programmes in AI, NLP, Computer Vision, or Multimodal Learning</span></div>
+          <div class="open-item"><div class="open-dot"></div><span>Research collaborations in NLP, low-resource AI, or XAI</span></div>
+          <div class="open-item"><div class="open-dot"></div><span>AI consulting for startups and enterprises via DataMastaros Ltd</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Manuel Bobie Amankwatia · Kumasi, Ghana</div>
+    <div class="footer-social">
+      <a href="https://linkedin.com/in/m-bobieamankwatia" target="_blank">LinkedIn</a>
+      <a href="https://github.com/mBobie" target="_blank">GitHub</a>
+      <a href="https://huggingface.co/SirBobb" target="_blank">HuggingFace</a>
+      <a href="mailto:manuelamankwatia@gmail.com">Email</a>
+      <a href="Manuel_Bobie_CV.pdf" download>CV</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
